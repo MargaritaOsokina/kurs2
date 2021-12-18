@@ -24,6 +24,13 @@ namespace kurs
             InitializeComponent();
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
 
+            // а тут теперь вручную создаем
+            emitter = new TopEmitter
+            {
+                Width = picDisplay.Width,
+                GravitationY = 0.25f
+            };
+            /*
             // гравитон
             emitter.impactPoints.Add(new GravityPoint
             {
@@ -43,7 +50,7 @@ namespace kurs
             {
                 X = (float)(picDisplay.Width * 0.75),
                 Y = picDisplay.Height / 2
-            });
+            });*/
         }
 
 

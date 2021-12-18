@@ -33,24 +33,38 @@ namespace kurs
         }
 
         int counter = 0; // добавлю счетчик чтобы считать вызовы функции
+                         // добавил функцию обновления состояния системы
+        private void UpdateState()
+        {
+            foreach (var particle in particles)
+            {
+                var directionInRadians = particle.Direction / 180 * Math.PI;
+                particle.X += (float)(particle.Speed * Math.Cos(directionInRadians));
+                particle.Y -= (float)(particle.Speed * Math.Sin(directionInRadians));
+            }
+        }
+
+        // функция рендеринга
+        private void Render(Graphics g)
+        {
+            // утащили сюда отрисовку частиц
+            foreach (var particle in particles)
+            {
+                particle.Draw(g);
+            }
+        }
+
+        // ну и обработка тика таймера, тут просто декомпозицию выполнили
         private void timer1_Tick(object sender, EventArgs e)
         {
-           counter++;
+            UpdateState(); // каждый тик обновляем систему
+
             using (var g = Graphics.FromImage(picDisplay.Image))
             {
-               // g.Clear(Color.White); // добавил очистку
-                // рисую на изображении сколько насчитал
-                g.DrawString(
-                    counter.ToString(), // значения счетчика в виде строки
-                    new Font("Arial", 12), // шрифт
-                    new SolidBrush(Color.Black), // цвет
-                    new PointF
-                    { // по центру экрана
-                    X = picDisplay.Image.Width / 2,
-                        Y = picDisplay.Image.Height / 2
-                    }
-                );
+                g.Clear(Color.White);
+                Render(g); // рендерим систему
             }
+
             picDisplay.Invalidate();
         }
     }

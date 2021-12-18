@@ -6,5 +6,6 @@ namespace kurs
 {
     class Emitter
     {
+
     }
 }

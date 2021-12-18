@@ -38,7 +38,7 @@ namespace kurs
            counter++;
             using (var g = Graphics.FromImage(picDisplay.Image))
             {
-                g.Clear(Color.White); // добавил очистку
+               // g.Clear(Color.White); // добавил очистку
                 // рисую на изображении сколько насчитал
                 g.DrawString(
                     counter.ToString(), // значения счетчика в виде строки

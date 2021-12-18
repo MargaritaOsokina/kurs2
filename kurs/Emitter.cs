@@ -6,9 +6,9 @@ using static kurs.Particle;
 
 namespace kurs
 {
-    class Emitter
+    public class Emitter
     {
-        public List<Point> gravityPoints = new List<Point>();
+        public List<IImpactPoint> impactPoints = new List<IImpactPoint>(); // <<< ТАК ВОТ
         List<Particle> particles = new List<Particle>();
         public int MousePositionX;
         public int MousePositionY;
@@ -44,28 +44,21 @@ namespace kurs
                     // это не трогаем
                     particle.Radius = 2 + Particle.rand.Next(10);
                 }
-                else
-                {
-                    // сделаем сначала для одной точки
-                    // и так считаем вектор притяжения к точке
-                    float gX = gravityPoints[0].X - particle.X;
-                    float gY = gravityPoints[0].Y - particle.Y;
+                    else
+        {
+                    // каждая точка по-своему воздействует на вектор скорости
+                    foreach (var point in impactPoints)
+                    {
+                        point.ImpactParticle(particle);
+                    }
 
-                    // считаем квадрат расстояния между частицей и точкой r^2
-                    float r2 = gX * gX + gY * gY;
-                    float M = 100; // сила притяжения к точке, пусть 100 будет
-
-                    // пересчитываем вектор скорости с учетом притяжения к точке
-                    particle.SpeedX += (gX) * M / r2;
-                    particle.SpeedY += (gY) * M / r2;
-
-                    // а это старый код, его не трогаем
+                    // это не трогаем
                     particle.SpeedX += GravitationX;
-                    particle.SpeedY += GravitationY;
+            particle.SpeedY += GravitationY;
 
-                    particle.X += particle.SpeedX;
-                    particle.Y += particle.SpeedY;
-                }
+            particle.X += particle.SpeedX;
+            particle.Y += particle.SpeedY;
+        }
             }
             for (var i = 0; i < 10; ++i)
             {
@@ -89,15 +82,15 @@ namespace kurs
 
         public void Render(Graphics g)
         {
-            // это не трогаем
+            // не трогаем
             foreach (var particle in particles)
             {
                 particle.Draw(g);
             }
 
-            // рисую точки притяжения красными кружочками
-            foreach (var point in gravityPoints)
+            foreach (var point in impactPoints) // тут теперь  impactPoints
             {
+                /* это больше не надо
                 g.FillEllipse(
                     new SolidBrush(Color.Red),
                     point.X - 5,
@@ -105,6 +98,8 @@ namespace kurs
                     10,
                     10
                 );
+                */
+                point.Render(g); // это добавили
             }
         }
     }

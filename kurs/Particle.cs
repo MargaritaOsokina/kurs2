@@ -5,7 +5,7 @@ using System.Text;
 
 namespace kurs
 {
-    class Particle
+    public class Particle
     {
 
         public int Radius; // радиус частицы

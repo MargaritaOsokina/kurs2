@@ -35,6 +35,7 @@ namespace kurs
             this.tbDirection = new System.Windows.Forms.TrackBar();
             this.lblDirection = new System.Windows.Forms.Label();
             this.tbGraviton = new System.Windows.Forms.TrackBar();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGraviton)).BeginInit();
@@ -83,11 +84,21 @@ namespace kurs
             this.tbGraviton.TabIndex = 3;
             this.tbGraviton.Scroll += new System.EventHandler(this.tbGraviton_Scroll);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(286, 409);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tbGraviton);
             this.Controls.Add(this.lblDirection);
             this.Controls.Add(this.tbDirection);
@@ -109,6 +120,7 @@ namespace kurs
         private System.Windows.Forms.TrackBar tbDirection;
         private System.Windows.Forms.Label lblDirection;
         private System.Windows.Forms.TrackBar tbGraviton;
+        private System.Windows.Forms.Button button1;
     }
 }
 

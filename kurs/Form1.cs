@@ -19,16 +19,17 @@ namespace kurs
         List<Particle> particles = new List<Particle>();
         private int MousePositionX = 0;
         private int MousePositionY = 0;
-      //  Emitter emitter = new Emitter(); // добавили эмиттер
-
+        //  Emitter emitter = new Emitter(); // добавили эмиттер
+        GravityPoint point1; // добавил поле под первую точку
+        GravityPoint point2; // добавил поле под вторую точку
         public Form1()
         {
-            
-                InitializeComponent();
-                picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
 
-                this.emitter = new Emitter // создаю эмиттер и привязываю его к полю emitter
-                {
+            InitializeComponent();
+            picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
+
+            this.emitter = new Emitter
+            {
                     Direction = 0,
                     Spreading = 10,
                     SpeedMin = 10,
@@ -40,8 +41,35 @@ namespace kurs
                     Y = picDisplay.Height / 2,
                 };
 
-                emitters.Add(this.emitter); // все равно добавляю в список emitters, чтобы он рендерился и обновлялся
-            
+            emitters.Add(this.emitter);
+
+            // добавил гравитон
+          //  emitter.impactPoints.Add(new GravityPoint
+          //  {
+          //      X = picDisplay.Width / 2 + 100,
+          //      Y = picDisplay.Height / 2,
+          //  });
+         // point1 = new GravityPoint
+        //   {
+          //     X = picDisplay.Width / 2 + 100,
+          //     Y = picDisplay.Height / 2,
+          //  };
+            point2 = new GravityPoint
+            {
+                X = picDisplay.Width / 2 - 100,
+                Y = picDisplay.Height / 2,
+            };
+            //emitter.impactPoints.Add(point1);
+            emitter.impactPoints.Add(point2);
+
+
+
+            // добавил второй гравитон
+            //  emitter.impactPoints.Add(new GravityPoint
+            //  {
+            //      X = picDisplay.Width / 2 - 100,
+            //     Y = picDisplay.Height / 2,
+            // });
             /*
             // гравитон
             emitter.impactPoints.Add(new GravityPoint
@@ -94,6 +122,27 @@ namespace kurs
             emitter.Direction = tbDirection.Value; // направлению эмиттера присваиваем значение ползунка 
             lblDirection.Text = $"{tbDirection.Value}°"; // добавил вывод значения
 
+        }
+
+        private void tbGraviton_Scroll(object sender, EventArgs e)
+        {
+
+            point2.Power = tbGraviton.Value;
+
+        }
+
+        private void picDisplay_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            foreach (var emitter in emitters)
+            {
+                emitter.MousePositionX = e.X;
+                emitter.MousePositionY = e.Y;
+            }
+
+            // а тут передаем положение мыши, в положение гравитона
+            point2.X = e.X;
+            point2.Y = e.Y;
         }
     }
 }

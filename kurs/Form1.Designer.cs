@@ -34,8 +34,10 @@ namespace kurs
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tbDirection = new System.Windows.Forms.TrackBar();
             this.lblDirection = new System.Windows.Forms.Label();
+            this.tbGraviton = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGraviton)).BeginInit();
             this.SuspendLayout();
             // 
             // picDisplay
@@ -45,6 +47,7 @@ namespace kurs
             this.picDisplay.Size = new System.Drawing.Size(776, 381);
             this.picDisplay.TabIndex = 0;
             this.picDisplay.TabStop = false;
+            this.picDisplay.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picDisplay_MouseClick);
             this.picDisplay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picDisplay_MouseMove);
             // 
             // timer1
@@ -71,11 +74,21 @@ namespace kurs
             this.lblDirection.TabIndex = 2;
             this.lblDirection.Text = "0";
             // 
+            // tbGraviton
+            // 
+            this.tbGraviton.Location = new System.Drawing.Point(386, 400);
+            this.tbGraviton.Maximum = 100;
+            this.tbGraviton.Name = "tbGraviton";
+            this.tbGraviton.Size = new System.Drawing.Size(130, 56);
+            this.tbGraviton.TabIndex = 3;
+            this.tbGraviton.Scroll += new System.EventHandler(this.tbGraviton_Scroll);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tbGraviton);
             this.Controls.Add(this.lblDirection);
             this.Controls.Add(this.tbDirection);
             this.Controls.Add(this.picDisplay);
@@ -83,6 +96,7 @@ namespace kurs
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGraviton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,6 +108,7 @@ namespace kurs
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TrackBar tbDirection;
         private System.Windows.Forms.Label lblDirection;
+        private System.Windows.Forms.TrackBar tbGraviton;
     }
 }
 

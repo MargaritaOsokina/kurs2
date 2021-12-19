@@ -37,8 +37,8 @@ namespace kurs
                     ColorFrom = Color.Gold,
                     ColorTo = Color.FromArgb(0, Color.Red),
                     ParticlesPerTick = 10,
-                    X = picDisplay.Width / 2,
-                    Y = picDisplay.Height / 2,
+                    X = picDisplay.Height/5,
+                    Y = picDisplay.Height / 5,
                 };
 
             emitters.Add(this.emitter);
@@ -133,16 +133,19 @@ namespace kurs
 
         private void picDisplay_MouseClick(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left) {
+                foreach (var emitter in emitters)
+                {
+                    emitter.MousePositionX = e.X;
+                    emitter.MousePositionY = e.Y;
+                }
 
-            foreach (var emitter in emitters)
-            {
-                emitter.MousePositionX = e.X;
-                emitter.MousePositionY = e.Y;
+                // а тут передаем положение мыши, в положение гравитона
+                point2.X = e.X;
+                point2.Y = e.Y;
             }
 
-            // а тут передаем положение мыши, в положение гравитона
-            point2.X = e.X;
-            point2.Y = e.Y;
+            
         }
     }
 }

@@ -68,9 +68,12 @@ namespace kurs
             // tbGraviton2
             // 
             this.tbGraviton2.Location = new System.Drawing.Point(551, 380);
+            this.tbGraviton2.Maximum = 300;
+            this.tbGraviton2.Minimum = 1;
             this.tbGraviton2.Name = "tbGraviton2";
             this.tbGraviton2.Size = new System.Drawing.Size(130, 56);
             this.tbGraviton2.TabIndex = 3;
+            this.tbGraviton2.Value = 1;
             this.tbGraviton2.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // button1

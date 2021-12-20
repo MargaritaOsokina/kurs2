@@ -24,6 +24,8 @@ namespace kurs
         GravityPoint2 point3;
         GravityPoint2 point4;
         GravityPoint2 point5;
+        GravityPoint2 point6;
+        GravityPoint2 point7;
         public Form2()
         {
             InitializeComponent();
@@ -32,36 +34,16 @@ namespace kurs
 
 
 
-            emitter = new Emitter
-            {
-                Direction = 0,
-                Spreading = 10,
-                SpeedMin = 10,
-                SpeedMax = 10,
-                ColorFrom = Color.MistyRose,
-                ColorTo = Color.FromArgb(0, Color.Red),
-                ParticlesPerTick = 10,
-                X = picDisplay2.Width / 5,
-                Y = picDisplay2.Height / 5,
+            emitter = new TopEmitter
+            { ParticlesPerTick = 10,
+                Width = picDisplay2.Width,
+                GravitationY = 0.25f
             };
 
             emitters.Add(emitter);
 
 
-            emitter1 = new Emitter
-            {
-                Direction = 0,
-                Spreading = 10,
-                SpeedMin = 10,
-                SpeedMax = 10,
-                ColorFrom = Color.Gold,
-                ColorTo = Color.FromArgb(0, Color.Red),
-                ParticlesPerTick = 10,
-                X = picDisplay2.Width / 2,
-                Y = picDisplay2.Height / 2,
-            };
-
-            emitters.Add(emitter1);
+           
             /*
 
                         this.emitter = new TopEmitter
@@ -88,39 +70,53 @@ namespace kurs
             {
                 X = picDisplay2.Width / 2 ,
                 Y = picDisplay2.Height / 2,
-                color = Color.Purple
+                color = Color.Red
 
             };
             point2 = new GravityPoint2
             {
                 X = picDisplay2.Width / 2+100,
                 Y = picDisplay2.Height / 2+15,
-                color = Color.Aqua
+                color = Color.Orange
             };
             point3 = new GravityPoint2
             {
                 X = picDisplay2.Width / 2-100,
                 Y = picDisplay2.Height / 2+15,
-                color = Color.Violet
+                color = Color.Yellow
             };
             point4 = new GravityPoint2
             {
                 X = picDisplay2.Width / 2 - 200,
                 Y = picDisplay2.Height / 2+30,
-                color = Color.Aquamarine
+                color = Color.Green
             };
             point5 = new GravityPoint2
             {
                 X = picDisplay2.Width / 2 + 200,
                 Y = picDisplay2.Height / 2+30,
-                color = Color.Red
+                color = Color.Blue
             };
-            
+            point6 = new GravityPoint2
+            {
+                X = picDisplay2.Width / 2 + 300,
+                Y = picDisplay2.Height / 2 + 45,
+                color = Color.DarkBlue
+            };
+            point7 = new GravityPoint2
+            {
+                X = picDisplay2.Width / 2 - 300,
+                Y = picDisplay2.Height / 2 + 45,
+                color = Color.Violet
+            };
+
             emitter.impactPoints.Add(point1);
             emitter.impactPoints.Add(point2);
             emitter.impactPoints.Add(point3);
             emitter.impactPoints.Add(point4);
             emitter.impactPoints.Add(point5);
+            emitter.impactPoints.Add(point6);
+            emitter.impactPoints.Add(point7);
 
 
             // добавил второй гравитон
@@ -194,7 +190,15 @@ namespace kurs
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            point2.Power = tbGraviton2.Value;
+
+
+            point1.Y = tbGraviton2.Value;
+            point2.Y = tbGraviton2.Value+15;
+            point3.Y = tbGraviton2.Value+15;
+            point4.Y = tbGraviton2.Value+30;
+            point5.Y = tbGraviton2.Value+30; 
+            point6.Y = tbGraviton2.Value+45;
+            point7.Y = tbGraviton2.Value+45;
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -132,7 +132,7 @@ namespace kurs
         private void tbGraviton_Scroll(object sender, EventArgs e)
         {
 
-            point1.Power = tbGraviton.Value;
+           // point1.Power = tbGraviton.Value;
 
         }
 

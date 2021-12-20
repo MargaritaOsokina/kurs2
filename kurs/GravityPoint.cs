@@ -9,7 +9,7 @@ namespace kurs
     {
         public int Power = 100; // сила притяжения
         int count = 0;
-
+        public Color ColorFrom = Color.White; // начальный цвет частицы
         // а сюда по сути скопировали с минимальными правками то что было в UpdateState
         public override void ImpactParticle(Particle particle)
         {
@@ -75,7 +75,7 @@ namespace kurs
         {
             // буду рисовать окружность с диаметром равным Power
             g.DrawEllipse(
-                   new Pen(Color.Red),
+                   new Pen(Color.Green),
                    X - Power / 2,
                    Y - Power / 2,
                    Power,

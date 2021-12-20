@@ -9,7 +9,8 @@ namespace kurs
     {
         public float X; // ну точка же, вот и две координаты
         public float Y;
-        public Color ColorFrom = Color.White; // начальный цвет частицы
+        public Color color;
+        public int schet = 0;
 
 
         // абстрактный метод с помощью которого будем изменять состояние частиц
@@ -19,13 +20,7 @@ namespace kurs
         // базовый класс для отрисовки точечки
         public virtual void Render(Graphics g)
         {
-            g.FillEllipse(
-                    new SolidBrush(Color.Red),
-                    X - 5,
-                    Y - 5,
-                    10,
-                    10
-                );
+
         }
     }
 }

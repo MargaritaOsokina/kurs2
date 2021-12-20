@@ -12,26 +12,66 @@ namespace kurs
     {
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
+        Emitter emitter1;
+
         // собственно список, пока пустой
         List<Particle> particles = new List<Particle>();
         private int MousePositionX = 0;
         private int MousePositionY = 0;
         //  Emitter emitter = new Emitter(); // добавили эмиттер
-        GravityPoint point1; // добавил поле под первую точку
-        GravityPoint point2; // добавил поле под вторую точку
+        GravityPoint2 point1; // добавил поле под первую точку
+        GravityPoint2 point2; // добавил поле под вторую точку
+        GravityPoint2 point3;
+        GravityPoint2 point4;
+        GravityPoint2 point5;
         public Form2()
         {
             InitializeComponent();
             picDisplay2.Image = new Bitmap(picDisplay2.Width, picDisplay2.Height);
 
-            this.emitter = new TopEmitter
+
+
+
+            emitter = new Emitter
             {
-                Width = picDisplay2.Width,
-                GravitationY = 0.25f
+                Direction = 0,
+                Spreading = 10,
+                SpeedMin = 10,
+                SpeedMax = 10,
+                ColorFrom = Color.MistyRose,
+                ColorTo = Color.FromArgb(0, Color.Red),
+                ParticlesPerTick = 10,
+                X = picDisplay2.Width / 5,
+                Y = picDisplay2.Height / 5,
             };
 
-            emitters.Add(this.emitter);
+            emitters.Add(emitter);
 
+
+            emitter1 = new Emitter
+            {
+                Direction = 0,
+                Spreading = 10,
+                SpeedMin = 10,
+                SpeedMax = 10,
+                ColorFrom = Color.Gold,
+                ColorTo = Color.FromArgb(0, Color.Red),
+                ParticlesPerTick = 10,
+                X = picDisplay2.Width / 2,
+                Y = picDisplay2.Height / 2,
+            };
+
+            emitters.Add(emitter1);
+            /*
+
+                        this.emitter = new TopEmitter
+                        {
+                            Width = picDisplay2.Width,
+                            GravitationY = 0.25f
+                        };
+
+                        emitters.Add(this.emitter);
+            */
             // добавил гравитон
             //  emitter.impactPoints.Add(new GravityPoint
             //  {
@@ -43,14 +83,44 @@ namespace kurs
             //     X = picDisplay.Width / 2 + 100,
             //     Y = picDisplay.Height / 2,
             //  };
-            point2 = new GravityPoint
-            {
-                X = picDisplay2.Width / 2 - 100,
-                Y = picDisplay2.Height / 2,
-            };
-            //emitter.impactPoints.Add(point1);
-            emitter.impactPoints.Add(point2);
 
+            point1 = new GravityPoint2
+            {
+                X = picDisplay2.Width / 2 ,
+                Y = picDisplay2.Height / 2,
+                color = Color.Purple
+
+            };
+            point2 = new GravityPoint2
+            {
+                X = picDisplay2.Width / 2+100,
+                Y = picDisplay2.Height / 2+15,
+                color = Color.Aqua
+            };
+            point3 = new GravityPoint2
+            {
+                X = picDisplay2.Width / 2-100,
+                Y = picDisplay2.Height / 2+15,
+                color = Color.Violet
+            };
+            point4 = new GravityPoint2
+            {
+                X = picDisplay2.Width / 2 - 200,
+                Y = picDisplay2.Height / 2+30,
+                color = Color.Aquamarine
+            };
+            point5 = new GravityPoint2
+            {
+                X = picDisplay2.Width / 2 + 200,
+                Y = picDisplay2.Height / 2+30,
+                color = Color.Red
+            };
+            
+            emitter.impactPoints.Add(point1);
+            emitter.impactPoints.Add(point2);
+            emitter.impactPoints.Add(point3);
+            emitter.impactPoints.Add(point4);
+            emitter.impactPoints.Add(point5);
 
 
             // добавил второй гравитон
@@ -87,7 +157,7 @@ namespace kurs
 
 
         // ну и обработка тика таймера, тут просто декомпозицию выполнили
-       
+
 
         private void picDisplay_MouseMove(object sender, MouseEventArgs e)
         {
@@ -131,7 +201,7 @@ namespace kurs
         {
             Form ifrm = new First();
             ifrm.Show(); // отображаем Form2
-            this.Hide(); // скрываем Form1 (this - текущая форма)
+            this.Close(); // скрываем Form1 (this - текущая форма)
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
@@ -144,8 +214,10 @@ namespace kurs
                 g.Clear(Color.Black);
                 emitter.Render(g); // а тут теперь рендерим через эмиттер
             }
+           
 
             picDisplay2.Invalidate();
+
         }
     }
 }

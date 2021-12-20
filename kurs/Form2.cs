@@ -24,17 +24,10 @@ namespace kurs
             InitializeComponent();
             picDisplay2.Image = new Bitmap(picDisplay2.Width, picDisplay2.Height);
 
-            this.emitter = new Emitter
+            this.emitter = new TopEmitter
             {
-                Direction = 0,
-                Spreading = 10,
-                SpeedMin = 10,
-                SpeedMax = 10,
-                ColorFrom = Color.Gold,
-                ColorTo = Color.FromArgb(0, Color.Red),
-                ParticlesPerTick = 10,
-                X = picDisplay2.Height / 5,
-                Y = picDisplay2.Height / 5,
+                Width = picDisplay2.Width,
+                GravitationY = 0.25f
             };
 
             emitters.Add(this.emitter);
@@ -94,18 +87,7 @@ namespace kurs
 
 
         // ну и обработка тика таймера, тут просто декомпозицию выполнили
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            emitter.UpdateState(); // тут теперь обновляем эмиттер
-
-            using (var g = Graphics.FromImage(picDisplay2.Image))
-            {
-                g.Clear(Color.Black);
-                emitter.Render(g); // а тут теперь рендерим через эмиттер
-            }
-
-            picDisplay2.Invalidate();
-        }
+       
 
         private void picDisplay_MouseMove(object sender, MouseEventArgs e)
         {
@@ -150,6 +132,20 @@ namespace kurs
             Form ifrm = new First();
             ifrm.Show(); // отображаем Form2
             this.Hide(); // скрываем Form1 (this - текущая форма)
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+
+            emitter.UpdateState(); // тут теперь обновляем эмиттер
+
+            using (var g = Graphics.FromImage(picDisplay2.Image))
+            {
+                g.Clear(Color.Black);
+                emitter.Render(g); // а тут теперь рендерим через эмиттер
+            }
+
+            picDisplay2.Invalidate();
         }
     }
 }

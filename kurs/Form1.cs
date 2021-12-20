@@ -30,9 +30,9 @@ namespace kurs
 
             this.emitter = new Emitter
             {
-                    Direction = 0,
-                    Spreading = 10,
-                    SpeedMin = 10,
+                    Direction = 45,
+                    Spreading = 200,
+                    SpeedMin = 1,
                     SpeedMax = 10,
                     ColorFrom = Color.Gold,
                     ColorTo = Color.FromArgb(0, Color.Red),
@@ -54,6 +54,10 @@ namespace kurs
           //     X = picDisplay.Width / 2 + 100,
           //     Y = picDisplay.Height / 2,
           //  };
+
+
+
+            /*
             point2 = new GravityPoint
             {
                 X = picDisplay.Width / 2 - 100,
@@ -62,7 +66,7 @@ namespace kurs
             //emitter.impactPoints.Add(point1);
             emitter.impactPoints.Add(point2);
 
-
+            */
 
             // добавил второй гравитон
             //  emitter.impactPoints.Add(new GravityPoint
@@ -115,6 +119,7 @@ namespace kurs
         {
             emitter.MousePositionX = e.X;
             emitter.MousePositionY = e.Y;
+
         }
 
         private void tbDirection_Scroll(object sender, EventArgs e)
@@ -132,7 +137,7 @@ namespace kurs
         }
 
         private void picDisplay_MouseClick(object sender, MouseEventArgs e)
-        {
+        {/*
             if (e.Button == MouseButtons.Left) {
                 foreach (var emitter in emitters)
                 {
@@ -143,9 +148,32 @@ namespace kurs
                 // а тут передаем положение мыши, в положение гравитона
                 point2.X = e.X;
                 point2.Y = e.Y;
-            }
+            }*/
+            if (e.Button == MouseButtons.Left)
+            {
+                point1 = new GravityPoint
+           {
+             X = picDisplay.Width / 2 + 100,
+             Y = picDisplay.Height / 2,
+         }; emitter.impactPoints.Add(point1);
+                foreach (var emitter in emitters)
+                {
+                    emitter.MousePositionX = e.X;
+                    emitter.MousePositionY = e.Y;
+                }
 
-            
+                // а тут передаем положение мыши, в положение гравитона
+                point1.X = e.X;
+                point1.Y = e.Y;
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new First();
+            ifrm.Show(); // отображаем Form2
+            this.Hide(); // скрываем Form1 (this - текущая форма)
         }
     }
 }

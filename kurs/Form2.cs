@@ -144,5 +144,12 @@ namespace kurs
         {
             point2.Power = tbGraviton2.Value;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form ifrm = new First();
+            ifrm.Show(); // отображаем Form2
+            this.Hide(); // скрываем Form1 (this - текущая форма)
+        }
     }
 }

@@ -29,11 +29,13 @@ namespace kurs
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.picDisplay2 = new System.Windows.Forms.PictureBox();
             this.tbDirection2 = new System.Windows.Forms.TrackBar();
             this.lblDirection = new System.Windows.Forms.Label();
             this.tbGraviton2 = new System.Windows.Forms.TrackBar();
             this.button1 = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGraviton2)).BeginInit();
@@ -79,6 +81,7 @@ namespace kurs
             this.button1.TabIndex = 4;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form2
             // 
@@ -109,5 +112,6 @@ namespace kurs
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TrackBar tbGraviton2;
+        private System.Windows.Forms.Timer timer1;
     }
 }

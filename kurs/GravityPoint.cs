@@ -17,13 +17,36 @@ namespace kurs
             float gX = X - particle.X;
             float gY = Y - particle.Y;
             double r = Math.Sqrt(gX * gX + gY * gY); // считаем расстояние от центра точки до центра частицы
-          
+
+           /* if (r + particle.Radius < Power / 2&& r + particle.Radius > Power / 2 - Power / 100)
+            {
+               
+                // particle.Life = 0;
+                
+                    count++;
+                    var p = (particle as ParticleColorful);
+                    (particle as ParticleColorful).FromColor = Color.BlueViolet;
+                    p.ToColor = Color.BlueViolet;
+                
+            }
+           */
+
+
+
             if (r + particle.Radius < Power / 2) // если частица оказалось внутри окружности
             {
                 count++;
                 
 
-
+               /* if (particle is ParticleColorful)
+                {
+                    var p = (particle as ParticleColorful);
+                    (particle as ParticleColorful).FromColor = Color.BlueViolet;
+                    p.ToColor = Color.BlueViolet;
+                }*/
+                particle.Life = 0;
+            }
+          
 
                 //меняется цвет
                 /*  if(particle is ParticleColorful)
@@ -46,7 +69,7 @@ namespace kurs
                 //Color ColorFrom = Color.White;
                 // ColorFrom = Color.White,
                 //  ColorTo = Color.FromArgb(0, Color.Red),
-            }
+
         }
         public override void Render(Graphics g)
         {

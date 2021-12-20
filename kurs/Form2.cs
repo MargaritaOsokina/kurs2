@@ -163,8 +163,7 @@ namespace kurs
 
         private void tbDirection_Scroll(object sender, EventArgs e)
         {
-            emitter.Direction = tbDirection2.Value; // направлению эмиттера присваиваем значение ползунка 
-            lblDirection.Text = $"{tbDirection2.Value}°"; // добавил вывод значения
+            
 
         }
 
@@ -222,6 +221,17 @@ namespace kurs
 
             picDisplay2.Invalidate();
 
+        }
+
+        private void tbDirection2_Scroll(object sender, EventArgs e)
+        {
+            point1.rad = tbDirection2.Value;
+            point2.rad = tbDirection2.Value;
+            point3.rad = tbDirection2.Value;
+            point4.rad = tbDirection2.Value;
+            point5.rad = tbDirection2.Value;
+            point6.rad = tbDirection2.Value;
+            point7.rad = tbDirection2.Value;
         }
     }
 }

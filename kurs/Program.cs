@@ -21,6 +21,8 @@ namespace kurs
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new First());
             // Application.Run(new Form1());
+          
         }
+        
     }
 }

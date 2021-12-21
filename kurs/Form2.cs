@@ -12,13 +12,7 @@ namespace kurs
     {
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
-        Emitter emitter1;
-
-        // собственно список, пока пустой
         List<Particle> particles = new List<Particle>();
-        private int MousePositionX = 0;
-        private int MousePositionY = 0;
-        //  Emitter emitter = new Emitter(); // добавили эмиттер
         GravityPoint2 point1; // добавил поле под первую точку
         GravityPoint2 point2; // добавил поле под вторую точку
         GravityPoint2 point3;
@@ -32,8 +26,6 @@ namespace kurs
             picDisplay2.Image = new Bitmap(picDisplay2.Width, picDisplay2.Height);
 
 
-
-
             emitter = new TopEmitter
             { ParticlesPerTick = 10,
                 Width = picDisplay2.Width,
@@ -42,29 +34,6 @@ namespace kurs
 
             emitters.Add(emitter);
 
-
-           
-            /*
-
-                        this.emitter = new TopEmitter
-                        {
-                            Width = picDisplay2.Width,
-                            GravitationY = 0.25f
-                        };
-
-                        emitters.Add(this.emitter);
-            */
-            // добавил гравитон
-            //  emitter.impactPoints.Add(new GravityPoint
-            //  {
-            //      X = picDisplay.Width / 2 + 100,
-            //      Y = picDisplay.Height / 2,
-            //  });
-            // point1 = new GravityPoint
-            //   {
-            //     X = picDisplay.Width / 2 + 100,
-            //     Y = picDisplay.Height / 2,
-            //  };
 
             point1 = new GravityPoint2
             {
@@ -118,73 +87,6 @@ namespace kurs
             emitter.impactPoints.Add(point6);
             emitter.impactPoints.Add(point7);
 
-
-            // добавил второй гравитон
-            //  emitter.impactPoints.Add(new GravityPoint
-            //  {
-            //      X = picDisplay.Width / 2 - 100,
-            //     Y = picDisplay.Height / 2,
-            // });
-            /*
-            // гравитон
-            emitter.impactPoints.Add(new GravityPoint
-            {
-                X = (float)(picDisplay.Width * 0.25),
-                Y = picDisplay.Height / 2
-            });
-
-            // в центре антигравитон
-            emitter.impactPoints.Add(new AntiGravityPoint
-            {
-                X = picDisplay.Width / 2,
-                Y = picDisplay.Height / 2
-            });
-
-            // снова гравитон
-            emitter.impactPoints.Add(new GravityPoint
-            {
-                X = (float)(picDisplay.Width * 0.75),
-                Y = picDisplay.Height / 2
-            });*/
-        }
-
-
-        // функция рендеринга
-
-
-        // ну и обработка тика таймера, тут просто декомпозицию выполнили
-
-
-        private void picDisplay_MouseMove(object sender, MouseEventArgs e)
-        {
-            emitter.MousePositionX = e.X;
-            emitter.MousePositionY = e.Y;
-        }
-
-        private void tbDirection_Scroll(object sender, EventArgs e)
-        {
-            
-
-        }
-
-      
-
-        private void picDisplay_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                foreach (var emitter in emitters)
-                {
-                    emitter.MousePositionX = e.X;
-                    emitter.MousePositionY = e.Y;
-                }
-
-                // а тут передаем положение мыши, в положение гравитона
-                point2.X = e.X;
-                point2.Y = e.Y;
-            }
-
-
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -233,5 +135,6 @@ namespace kurs
             point6.rad = tbDirection2.Value;
             point7.rad = tbDirection2.Value;
         }
-    }
+
+}
 }

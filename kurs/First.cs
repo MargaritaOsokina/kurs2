@@ -28,5 +28,6 @@ namespace kurs
             ifrm.Show(); // отображаем Form2
             this.Hide(); // скрываем Form1 (this - текущая форма)
         }
+      
     }
 }

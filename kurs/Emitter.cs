@@ -111,15 +111,6 @@ namespace kurs
 
             foreach (var point in impactPoints) // тут теперь  impactPoints
             {
-                /* это больше не надо
-                g.FillEllipse(
-                    new SolidBrush(Color.Red),
-                    point.X - 5,
-                    point.Y - 5,
-                    10,
-                    10
-                );
-                */
                 point.Render(g); // это добавили
             }
         }

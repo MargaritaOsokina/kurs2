@@ -116,7 +116,7 @@ namespace kurs
             this.Controls.Add(this.tbDirection2);
             this.Controls.Add(this.picDisplay2);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Задание 2";
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGraviton2)).EndInit();
